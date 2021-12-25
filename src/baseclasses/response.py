@@ -24,3 +24,9 @@ class Response:
         else:
             assert self.response_status == status_code, GlobalErrors.WRONG_ELEMENT_COUNT.value
         return self
+
+    def __str__(self):
+        return \
+            f"\nStatus code: {self.response_status} \n" \
+            f"Requested url: {self.response.url} \n" \
+            f"Response body: {self.response_json}"
