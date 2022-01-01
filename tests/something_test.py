@@ -1,3 +1,4 @@
+import pytest
 import requests
 from src.enums.global_enums import GlobalErrors
 from jsonschema import validate
@@ -8,8 +9,24 @@ from src.schemas.user import User
 from configuration import *
 
 
+@pytest.mark.production     # pytest -s -v -k production test/something_test.py
 def test_url(get_users):
     Response(get_users)
-    # request_ = requests.get(url=SERVICE_URL)
-    # test_object = Response(request_)
-    # test_object.assert_status_code(200).validate_(User)
+
+
+@pytest.mark.production
+@pytest.mark.skip("Example of skip a test.")
+def test_skip():
+    pass
+
+
+@pytest.mark.development    # pytest -s -v -k development test/something_test.py
+@pytest.mark.parametrize('first_value, second_value, result', [
+    (1, 2, 3),
+    (-1, 2, 1),
+    (-1, -2, -3),
+    ('a', 2, None),
+    ('a', 'b', None)
+])
+def test_calculate(first_value, second_value, result, calculate):
+    assert calculate(first_value, second_value) == result
