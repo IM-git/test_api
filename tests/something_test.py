@@ -11,13 +11,21 @@ from configuration import *
 
 @pytest.mark.production     # pytest -s -v -k production test/something_test.py
 def test_url(get_users):
+    """ Received a response from the website. """
     Response(get_users)
 
 
 @pytest.mark.production
 @pytest.mark.skip("Example of skip a test.")
 def test_skip():
+    """ Checking how to skip test method. """
     pass
+
+
+@pytest.mark.production
+def test_with_error():
+    """ In that test we try to check that 1 is equal to 2. """
+    assert 21 == 12
 
 
 @pytest.mark.development    # pytest -s -v -k development test/something_test.py
@@ -29,4 +37,5 @@ def test_skip():
     ('a', 'b', None)
 ])
 def test_calculate(first_value, second_value, result, calculate):
+    """ Comparing calculating method with expected calculating value(Valid and invalid). """
     assert calculate(first_value, second_value) == result
