@@ -36,8 +36,3 @@ class Player:
 
     def build(self):
         return self.result
-
-
-c = Player().build()
-print(c)
-print(Player().set_balance(9999).set_status("DELETED").build())
