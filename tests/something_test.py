@@ -1,12 +1,5 @@
 import pytest
-import requests
-from src.enums.global_enums import GlobalErrors
-from jsonschema import validate
-from src.schemas.post import POST_SCHEMA
 from src.baseclasses.response import Response
-from src.pydantic_shemas.post import Post
-from src.schemas.user import User
-from configuration import *
 
 
 @pytest.mark.production     # pytest -s -v -k production test/something_test.py
@@ -24,8 +17,8 @@ def test_skip():
 
 @pytest.mark.production
 def test_with_error():
-    """ In that test we try to check that 1 is equal to 2. """
-    assert 21 == 12
+    """ In that test we try to check that first value is equal to second value. """
+    assert 12 == 21
 
 
 @pytest.mark.development    # pytest -s -v -k development test/something_test.py
