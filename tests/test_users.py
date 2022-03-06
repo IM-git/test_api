@@ -28,7 +28,18 @@ def test_deleted_all_keys(delete_key, get_player_generator):
 
 def test_add_new_key_in_dictionary(get_player_generator):
     """Add new key in dictionary and change value in localization."""
-    object_to_send = get_player_generator.update_inner_generator(
-        'localize', PlayerLocalization('fr_FR').set_number(15)
+    object_to_send = get_player_generator.update_inner_value(
+        ['localize', 'en', 'countries'], PlayerLocalization('fr_FR').set_number(15).build()
+    ).build()
+    print(object_to_send)
+
+
+@pytest.mark.parametrize("localizations, loc", [
+    ("fr", "fr_FR")
+])
+def test_something_with_parametrize(get_player_generator, localizations, loc):
+    """Add new key in dictionary and change value in localization."""
+    object_to_send = get_player_generator.update_inner_value(
+        ['localize', localizations], PlayerLocalization(loc).set_number(15).build()
     ).build()
     print(object_to_send)

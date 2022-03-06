@@ -1,17 +1,14 @@
 Docker+Pytest+Allure
-====
-____
-This is an example of execution api testing.
+====================
 
-Description:
-Perform the test and save the allure report in the specified location.
+Description: Perform the test and save the allure report in the specified location.
 Docker image is being created. After running is created an allure report in the docker container. Report is copied to the specified destination.
 
 Execution Steps:
->+ docker build -t <name_docker_image> .
->+ docker run --name <name_container> -it <name_docker_image>
->+ docker cp <name_container>:<path_in_docker_image> <destination_path>
->+ allure serve <destination_path>
++ docker build -t <name_docker_image> .
++ docker run --name <name_container> -it <name_docker_image>
++ docker cp <name_container>:<path_in_docker_image> <destination_path>
++ allure serve <destination_path>
 
 Additions:
 * <name_docker_image> - come up your own **name docker image**.
