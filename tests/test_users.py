@@ -1,13 +1,11 @@
 import pytest
 from src.generators.player_localization import PlayerLocalization
+from src.enums.user_enums import Statuses
+from src.schemas.computer import Computer
+from examples import computer
 
 
-@pytest.mark.parametrize("status", [
-    "ACTIVE",
-    "BANNED",
-    "DELETED",
-    "INACTIVE"
-])
+@pytest.mark.parametrize("status", Statuses.list())
 def test_something(status, get_player_generator):
     """Generated list with player's values."""
     print(get_player_generator.build())
@@ -43,3 +41,8 @@ def test_something_with_parametrize(get_player_generator, localizations, loc):
         ['localize', localizations], PlayerLocalization(loc).set_number(15).build()
     ).build()
     print(object_to_send)
+
+
+def test_pydantic_object():
+    comp = Computer.parse_obj(computer)
+    print(comp.detailed_info.physical.color)

@@ -1,4 +1,5 @@
 from enum import Enum
+from src.baseclasses.pyenum import PyEnum
 
 
 class Genders(Enum):
@@ -6,11 +7,12 @@ class Genders(Enum):
     male = "male"
 
 
-class Statuses(Enum):
+class Statuses(PyEnum):
     ACTIVE = "ACTIVE"
     BANNED = "BANNED"
     DELETED = "DELETED"
     INACTIVE = "INACTIVE"
+    MERGED = "MERGED"
 
 
 class UserErrors(Enum):
